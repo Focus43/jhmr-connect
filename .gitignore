@@ -1,0 +1,10 @@
+# IDE stuff
+.idea
+
+# Node
+node_modules/
+.sass-cache
+*.log
+
+# Builds shouldn't be checked in!
+build/

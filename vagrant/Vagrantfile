@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
 
   # COMMONLY USED SETTINGS : NORMALLY DON'T CUSTOMIZE BELOW THIS HASH
   box_settings = {
-    :project_name => 'custom_app',
+    :project_name => 'jhmr_connect',
     # Memory available for the virtual machine
     :memory_cap => '384',
     # Install Redis?
@@ -16,28 +16,31 @@ Vagrant.configure("2") do |config|
     :nodejs => {
       :install  => true,
       :gruntjs  => false,
-      :gulpjs   => false,
-      :bower    => false,
+      :gulpjs   => true,
+      :bower    => true,
       :npm      => {
-        :auto_install_packages => false,
+        :auto_install_packages => true,
         :package_json_location => '/home/vagrant/app'
       }
     },
     # Web settings
     :web => {
       # Port to forward from vagrant -> your machine (eg: http://localhost:8080)
-      :http_port => {:from => 3000, :to => 3000},
+      :http_port => {:from => 80, :to => 8080},
       # Install a server? options: 'nginx', 'apache', or false for none (ie. false to use Rails internal server)
-      :server => false,
+      :server => 'nginx',
       # Only applicable if :server = 'nginx|apache'
-      :doc_root => '/home/vagrant/app'
+      :doc_root => '/home/vagrant/app/build'
     },
     # Ruby settings for this box (using rbenv, to install more rubies, modify per-project)
     :ruby_settings => {
       # Ruby version to install for the Vagrant user
       :version => "2.1.0",
       # Gems to install out of the gate
-      :gems => [{:name => 'bundler'}]
+      :gems => [
+        {:name => 'bundler'},
+        {:name => 'compass', :version => '~> 1.0.1'}
+      ]
     },
     # PostgreSQL settings
     :postgres => {
@@ -141,7 +144,7 @@ Vagrant.configure("2") do |config|
       chef.add_recipe 'box_setup::npm'
 
       _attributes[:nodejs] = {
-          :npm => '2.1.0'
+          :npm => '2.1.3'
       }
     end
 

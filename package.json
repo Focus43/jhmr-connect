@@ -1,0 +1,26 @@
+{
+  "name": "jhmr-connect",
+  "description": "JHMR Connect App",
+  "version": "0.0.1",
+  "author": {
+    "name": "Focus43"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Focus43/jhmr-connect.git"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "2.1.x"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-concat": "^2.4.1",
+    "gulp-jshint": "^1.8.5",
+    "gulp-livereload": "^2.1.1",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-uglify": "^1.0.1",
+    "gulp-util": "^3.0.1",
+    "jshint-stylish": "^1.0.0"
+  }
+}
