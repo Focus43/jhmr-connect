@@ -20,13 +20,11 @@
         Concat      = require('gulp-concat'),
         Uglify      = require('gulp-uglify'),
         JsHint      = require('gulp-jshint'),
-        Nodemon     = require('gulp-nodemon'),
         Template    = require('gulp-template'),
         HtmlMin     = require('gulp-htmlmin'),
         Wrapper     = require('gulp-wrapper'),
-        // Through2    = require('through2'),
-        // EventStream = require('event-stream'),
-        // QDefer      = require('q');
+        Through2    = require('through2'),
+        EventStream = require('event-stream');
 
     /**
      * @var sources JSON Easy way to keep track of shit in one place
@@ -53,35 +51,25 @@
 
     /**
      * Get template settings based on build target
-     * @param _target
-     * @returns {*}
+     * @param workflow
+     * @returns {{apiEndpoint: string, basePath: string, assetPath: assetPath}}
      */
-    function templateVars(_target) {
-        switch(_target){
+    function getTemplateVars( workflow ){
+        switch(workflow){
             case 'prod':
                 return {
-                    apiEndpoint : '',
-                    basePath    : '/',
-                    assetPath   : function(_path){
-                        return this.basePath + 'assets/' + _path;
-                    },
-                    imagePath   : function(_image){
-                        return this.basePath + 'assets/img/' + _image;
-                    }
+                    apiEndpoint : '',  // eg. 127.0.0.1:3000
+                    basePath    : '/', // ie. asset path if on a cdn
+                    assetPath   : function( _path ){ return this.basePath + 'assets/' + _path; }
                 };
 
-            case 'dev':
+            default: // ie. "dev"
                 return {
-                    apiEndpoint : '',
-                    basePath    : '/',
-                    assetPath   : function(_path){
-                        return this.basePath + 'assets/' + _path;
-                    },
-                    imagePath   : function(_image){
-                        return this.basePath + 'assets/img/' + _image;
-                    }
-                }
-        };
+                    apiEndpoint : '',  // eg. 127.0.0.1:3000
+                    basePath    : '/', // ie. asset path if on a cdn
+                    assetPath   : function( _path ){ return this.basePath + 'assets/' + _path; }
+                };
+        }
     }
 
     // TASKS
@@ -134,6 +122,69 @@
     }
 
 
+    /**
+     * Seems silly but couldn't find a good existing gulp plugin to handle injection
+     * into another file and return a stream in the way we need it; so this handles
+     * it.
+     *
+     * @todo: install Through2
+     */
+    function mergeTemplatesIntoIndex(){
+        var firstFile = null;
+
+        return Through2.obj(function( file, enc, callback ){
+            if( ! firstFile ){
+                firstFile = file;
+                callback();
+                return;
+            }
+
+            var index = firstFile.contents.toString(),
+                vinyl = new Utils.File({
+                    path: firstFile.path.replace(firstFile.base, ''), // "index.html"
+                    contents: new Buffer(index.replace('<!--__NG_TEMPLATES__-->', file.contents.toString()))
+                });
+
+            this.push(vinyl);
+            callback();
+        });
+    }
+
+
+    /**
+     * Takes care of merging all markup into index.html, wrapping any templates
+     * in ng-template tags (with the path id mappings by directory from source/html
+     * as the ROOT folder), minifying everything (if minify = true), and finally handling
+     * variable replacements via Template plugin.
+     *
+     * @param bool minify : Minify the markup?
+     * @param string workflow : Specify a workflow target to pull variables from
+     * for templating
+     * @return Vinyl | Stream
+     *
+     * @todo: install gulp plugins for: HtmlMin, Utils, Wrapper, EventStream, Template
+     */
+    function buildHtml( minify, workflow ){
+        var minSettings  = {collapseWhiteSpace:true, removeComments:false, caseSensitive:true};
+
+        var streamIndex = gulp.src(sourcePath('html/index.html')).
+            pipe( minify ? HtmlMin(minSettings) : Utils.noop() );
+
+        var streamTemplates = gulp.src([sourcePath('html/**/*.html'), '!'+sourcePath('html/index.html')]).
+            pipe( minify ? HtmlMin(minSettings) : Utils.noop() ).
+            pipe(Wrapper({
+                header: '<script type="text/ng-template" id="/${filename}">',
+                footer: '</script>'
+            })).
+            pipe(Concat('', {newLine:''})); // Concat task works fine w/ html too...
+
+        return EventStream.merge(streamIndex, streamTemplates).
+            pipe(mergeTemplatesIntoIndex()).
+            pipe(Template(getTemplateVars(workflow || undefined))).
+            pipe(gulp.dest(buildPath('')));
+    }
+
+
     // WATCH TASKS
     gulp.task('watch', function () {
         gulp.watch(sourcePath('sass/**/*.scss'), ['sass:dev']);
@@ -151,17 +202,17 @@
     gulp.task('copy', function(){ return taskCopyFiles(); });
     gulp.task('sass:dev', function(){ return taskSass(); });
     gulp.task('sass:prod', function(){ return taskSass('compressed', 'prod'); });
-    gulp.task('js:core:dev', function(){ return taskJs(jsSource.core, 'core.js'); });
-    gulp.task('js:core:prod', function(){ return taskJs(jsSource.core, 'core.js', true); });
+    gulp.task('js:core:dev', function(){ return taskJs(sources.js.app, 'core.js'); });
+    gulp.task('js:core:prod', function(){ return taskJs(sources.js.app, 'core.js', true); });
     gulp.task('lint:app', function(){ return taskLint(); });
-    gulp.task('js:app:dev', ['lint:app'], function(){ return taskJs(jsSource.application, 'application.js'); });
-    gulp.task('js:app:prod', ['lint:app'], function(){ return taskJs(jsSource.application, 'application.js', true); });
+    gulp.task('js:app:dev', ['lint:app'], function(){ return taskJs(sources.js.app, 'application.js'); });
+    gulp.task('js:app:prod', ['lint:app'], function(){ return taskJs(sources.js.app, 'application.js', true); });
     gulp.task('js:all:dev', ['lint:app'], function(){
-        taskJs(jsSource.core, 'core.js');
-        taskJs(jsSource.application, 'application.js');
+        taskJs(sources.js.core, 'core.js');
+        taskJs(sources.js.app, 'application.js');
     });
-    gulp.task('markup:dev', function(){ taskMarkup(false); });
-    gulp.task('markup:prod', function(){ taskMarkup(true, 'prod'); });
+    gulp.task('markup:dev', function(){ buildHtml(false); });
+    gulp.task('markup:prod', function(){ buildHtml(true, 'prod'); });
 
     /**
      * Build the entire app for development
