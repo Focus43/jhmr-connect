@@ -1,0 +1,31 @@
+server {
+    # Bindings
+    listen <%= node[:box_setup][:web][:http_port][:from] %> default;
+    server_name <%= node[:box_setup][:server_name] %>;
+
+    # Turn off logging
+    access_log off;
+    error_log off;
+
+    # Defaults
+    keepalive_timeout 10;
+    sendfile off;
+
+    location / {
+        # Auto-wrap jsonp requests with the callback name (simply uncomment)
+        #if ($request_uri ~* "callback="){
+        #    echo_before_body $arg_CALLBACK(;
+        #    echo_after_body ');';
+        #}
+
+    	root <%= node[:box_setup][:web][:doc_root] %>;
+    	try_files $uri /index.html;
+    }
+
+    # Static assets (@todo: make configurable path)
+    location ~ ^/assets./ {
+        root <%= node[:box_setup][:web][:doc_root] %>/assets;
+        expires off;
+        break;
+    }
+}
