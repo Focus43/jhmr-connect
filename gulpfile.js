@@ -20,10 +20,10 @@
         Concat      = require('gulp-concat'),
         Uglify      = require('gulp-uglify'),
         JsHint      = require('gulp-jshint'),
-        Nodemon     = require('gulp-nodemon'),
-        Template    = require('gulp-template'),
-        HtmlMin     = require('gulp-htmlmin'),
-        Wrapper     = require('gulp-wrapper'),
+        // Nodemon     = require('gulp-nodemon'),
+        Template    = require('gulp-template')
+        // HtmlMin     = require('gulp-htmlmin'),
+        // Wrapper     = require('gulp-wrapper')
         // Through2    = require('through2'),
         // EventStream = require('event-stream'),
         // QDefer      = require('q');
@@ -151,11 +151,11 @@
     gulp.task('copy', function(){ return taskCopyFiles(); });
     gulp.task('sass:dev', function(){ return taskSass(); });
     gulp.task('sass:prod', function(){ return taskSass('compressed', 'prod'); });
-    gulp.task('js:core:dev', function(){ return taskJs(jsSource.core, 'core.js'); });
-    gulp.task('js:core:prod', function(){ return taskJs(jsSource.core, 'core.js', true); });
+    gulp.task('js:core:dev', function(){ return taskJs(sources.js.core, 'core.js'); });
+    gulp.task('js:core:prod', function(){ return taskJs(sources.js.core, 'core.js', true); });
     gulp.task('lint:app', function(){ return taskLint(); });
-    gulp.task('js:app:dev', ['lint:app'], function(){ return taskJs(jsSource.application, 'application.js'); });
-    gulp.task('js:app:prod', ['lint:app'], function(){ return taskJs(jsSource.application, 'application.js', true); });
+    gulp.task('js:app:dev', ['lint:app'], function(){ return taskJs(sources.js.app, 'application.js'); });
+    gulp.task('js:app:prod', ['lint:app'], function(){ return taskJs(sources.js.app, 'application.js', true); });
     gulp.task('js:all:dev', ['lint:app'], function(){
         taskJs(jsSource.core, 'core.js');
         taskJs(jsSource.application, 'application.js');
@@ -166,7 +166,7 @@
     /**
      * Build the entire app for development
      */
-    gulp.task('build:dev', ['copy', 'sass:dev', 'js:core:dev', 'js:app:dev', 'markup:dev'], function(){
+    gulp.task('build:dev', ['copy', 'sass:dev', 'js:core:dev', 'js:app:dev'], function(){
         Utils.log(Utils.colors.cyan('Dev build complete!'));
     });
 
