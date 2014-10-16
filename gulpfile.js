@@ -84,7 +84,7 @@
     // Sass
     function taskSass ( outputStyle, workflow ) {
         return gulp.src(sources.sass)
-            .pipe(Sass({ sourcemap:false, compass:true, style:(outputStyle || 'nested') }))
+            .pipe(Sass({ compass:true, style:(outputStyle || 'nested') }))
             .on('error', function(err){
                 console.log(err.toString());
                 this.emit('end');
