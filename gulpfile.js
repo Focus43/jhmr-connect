@@ -54,7 +54,7 @@
      * @param workflow
      * @returns {{apiEndpoint: string, basePath: string, assetPath: assetPath}}
      */
-    function getTemplateVars( workflow ){
+    function templateVars( workflow ){
         switch(workflow){
             case 'prod':
                 return {
@@ -176,11 +176,11 @@
                 header: '<script type="text/ng-template" id="/${filename}">',
                 footer: '</script>'
             })).
-            pipe(Concat('', {newLine:''})); // Concat task works fine w/ html too...
+            pipe(Concat('irrelevant', {newLine:''})); // Concat task works fine w/ html too...
 
         return EventStream.merge(streamIndex, streamTemplates).
             pipe(mergeTemplatesIntoIndex()).
-            pipe(Template(getTemplateVars(workflow || undefined))).
+            pipe(Template(templateVars(workflow || undefined))).
             pipe(gulp.dest(buildPath('')));
     }
 
@@ -202,8 +202,8 @@
     gulp.task('copy', function(){ return taskCopyFiles(); });
     gulp.task('sass:dev', function(){ return taskSass(); });
     gulp.task('sass:prod', function(){ return taskSass('compressed', 'prod'); });
-    gulp.task('js:core:dev', function(){ return taskJs(sources.js.app, 'core.js'); });
-    gulp.task('js:core:prod', function(){ return taskJs(sources.js.app, 'core.js', true); });
+    gulp.task('js:core:dev', function(){ return taskJs(sources.js.core, 'core.js'); });
+    gulp.task('js:core:prod', function(){ return taskJs(sources.js.core, 'core.js', true); });
     gulp.task('lint:app', function(){ return taskLint(); });
     gulp.task('js:app:dev', ['lint:app'], function(){ return taskJs(sources.js.app, 'application.js'); });
     gulp.task('js:app:prod', ['lint:app'], function(){ return taskJs(sources.js.app, 'application.js', true); });
