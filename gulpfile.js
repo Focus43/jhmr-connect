@@ -30,7 +30,7 @@
      * @var sources JSON Easy way to keep track of shit in one place
      */
     var sources = {
-        css: sourcePath('sass/app.scss'),
+        sass: sourcePath('sass/app.scss'),
         js: {
             core: [
                 // Basics
@@ -82,14 +82,14 @@
     }
 
     // Sass
-    function taskSass ( outputStyle, buildTarget ) {
-        return gulp.src(sourcePath('sass/application.scss'))
+    function taskSass ( outputStyle, workflow ) {
+        return gulp.src(sources.sass)
             .pipe(Sass({ sourcemap:false, compass:true, style:(outputStyle || 'nested') }))
             .on('error', function(err){
                 console.log(err.toString());
                 this.emit('end');
             })
-            .pipe(Template( templateVars(buildTarget || 'dev') ))
+            .pipe(Template( templateVars(workflow || undefined) ))
             .pipe(gulp.dest( buildPath('assets/css') ))
     }
 
@@ -211,17 +211,17 @@
         taskJs(sources.js.core, 'core.js');
         taskJs(sources.js.app, 'application.js');
     });
-    gulp.task('markup:dev', function(){ buildHtml(false); });
-    gulp.task('markup:prod', function(){ buildHtml(true, 'prod'); });
+    gulp.task('html:dev', function(){ buildHtml(false); });
+    gulp.task('html:prod', function(){ buildHtml(true, 'prod'); });
 
     /**
      * Build the entire app for development
      */
-    gulp.task('build:dev', ['copy', 'sass:dev', 'js:core:dev', 'js:app:dev', 'markup:dev'], function(){
+    gulp.task('build:dev', ['copy', 'sass:dev', 'js:core:dev', 'js:app:dev', 'html:dev'], function(){
         Utils.log(Utils.colors.cyan('Dev build complete!'));
     });
 
-    gulp.task('build:prod', ['copy', 'sass:prod', 'js:core:prod', 'js:app:prod', 'markup:prod'], function(){
+    gulp.task('build:prod', ['copy', 'sass:prod', 'js:core:prod', 'js:app:prod', 'html:prod'], function(){
         Utils.log(Utils.colors.cyan('Prod build complete!'));
     });
 
