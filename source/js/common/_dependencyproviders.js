@@ -38,7 +38,7 @@ angular.module('obiWan').config(function($provide) {
 });
 
 /**
- * support multiple GA accounts
+ * update $analyticsProvider to support multiple GA accounts
  */
 angular.module('obiWan').config(function($analyticsProvider) {
 
