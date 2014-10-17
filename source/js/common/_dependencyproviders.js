@@ -1,3 +1,6 @@
+/* global google */
+/* global ga */
+/* global _gaq */
 
 /**
  * displaying maps

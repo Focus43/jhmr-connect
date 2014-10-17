@@ -1,14 +1,17 @@
 (function( gulp ){ 'use strict';
 
     /**
-     * Really important to get the FULL system path, as gulp-watch can
-     * get confused sometimes...
-     * @param _path
-     * @returns {string}
+     * IMPORTANT: make sure FULL system path is returned so Gulp watch doesn't get confused...
+     * @param string path Get path on file system for source files
+     * @return string
      */
-    // function sourcePath(_path){ return __dirname + '/source/' + _path; }
-    // function buildPath(_path){ return __dirname + '/build/' + _path; }
     function sourcePath(_path){ return __dirname + '/source/%s'.replace('%s', _path); }
+
+    /**
+     * Same thing
+     * @param string path Get path on file system for build files
+     * @return string
+     */
     function buildPath(_path){ return __dirname + '/build/%s'.replace('%s', _path); }
 
     /**
@@ -24,13 +27,14 @@
         HtmlMin     = require('gulp-htmlmin'),
         Wrapper     = require('gulp-wrapper'),
         Through2    = require('through2'),
-        EventStream = require('event-stream');
+        EventStream = require('event-stream'),
+        LiveReload  = require('gulp-livereload');
 
     /**
      * @var sources JSON Easy way to keep track of shit in one place
      */
     var sources = {
-        sass: sourcePath('sass/app.scss'),
+        sass: sourcePath('sass/application.scss'),
         js: {
             core: [
                 // Basics
@@ -107,7 +111,7 @@
     // JS linting
     function taskLint(){
         return gulp.src( sourcePath('js/**/*.js') )
-            .pipe(JsHint()) // where is jshintrc?
+            .pipe(JsHint(__dirname + '/.jshintrc'))
             .pipe(JsHint.reporter('jshint-stylish'))
     }
 
@@ -126,11 +130,8 @@
 
 
     /**
-     * Seems silly but couldn't find a good existing gulp plugin to handle injection
-     * into another file and return a stream in the way we need it; so this handles
-     * it.
-     *
-     * @todo: install Through2
+     * Merge all templates into index.html, wrapped with ng-template script tags.
+     * @return Stream
      */
     function mergeTemplatesIntoIndex(){
         var firstFile = null;
@@ -164,24 +165,20 @@
      * @param string workflow : Specify a workflow target to pull variables from
      * for templating
      * @return Vinyl | Stream
-     *
-     * @todo: install gulp plugins for: HtmlMin, Utils, Wrapper, EventStream, Template
      */
     function buildHtml( minify, workflow ){
-        var minSettings  = {collapseWhiteSpace:true, removeComments:false, caseSensitive:true};
+        var strIndex = gulp.src(sourcePath('html/index.html')).
+            pipe( minify ? HtmlMin({collapseWhitespace:true,removeComments:false,caseSensitive:true}) : Utils.noop() );
 
-        var streamIndex = gulp.src(sourcePath('html/index.html')).
-            pipe( minify ? HtmlMin(minSettings) : Utils.noop() );
-
-        var streamTemplates = gulp.src([sourcePath('html/**/*.html'), '!'+sourcePath('html/index.html')]).
-            pipe( minify ? HtmlMin(minSettings) : Utils.noop() ).
+        var strViews = gulp.src([sourcePath('html/**/*.html'), '!'+sourcePath('html/index.html')], {base:sourcePath('html/')}).
+            pipe( minify ? HtmlMin({collapseWhitespace:true,removeComments:true,caseSensitive:true}) : Utils.noop() ).
             pipe(Wrapper({
                 header: '<script type="text/ng-template" id="/${filename}">',
                 footer: '</script>'
             })).
-            pipe(Concat('irrelevant', {newLine:''})); // Concat task works fine w/ html too...
+            pipe(Concat('irrelevant', {newLine:''}));
 
-        return EventStream.merge(streamIndex, streamTemplates).
+        return EventStream.merge(strIndex, strViews).
             pipe(mergeTemplatesIntoIndex()).
             pipe(Template(templateVars(workflow || undefined))).
             pipe(gulp.dest(buildPath('')));
@@ -190,9 +187,15 @@
 
     // WATCH TASKS
     gulp.task('watch', function () {
+        LiveReload.listen();
         gulp.watch(sourcePath('sass/**/*.scss'), ['sass:dev']);
         gulp.watch(sourcePath('js/**/*.js'), ['js:app:dev']);
-        // gulp.watch(sourcePath('html/**/*.html'), ['html:dev']);
+        gulp.watch(sourcePath('html/**/*.html'), ['html:dev']);
+
+        // Livereload ONLY on *.css changes in the build directory, NOT .scss file changes
+        gulp.watch(buildPath('assets/css/*.css')).on('change', function( file ){
+            LiveReload.change(file.path);
+        });
     });
 
     // DEFAULT TASK
