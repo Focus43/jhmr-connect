@@ -5,7 +5,7 @@
 /**
  * displaying maps
  */
-angular.module('obiWan').config(function($provide) {
+angular.module('jhmrc').config(function($provide) {
     $provide.factory('displayMap', function() {
         return function (elem, attrs) {
             var mapOptions,
@@ -43,42 +43,42 @@ angular.module('obiWan').config(function($provide) {
 /**
  * update $analyticsProvider to support multiple GA accounts
  */
-angular.module('obiWan').config(function($analyticsProvider) {
-
-    $analyticsProvider.registerPageTrack(function (path) {
-        if (window._gaq) { _gaq.push(['_trackPageview', path]); }
-        if (window.ga) {
-            ga(function() {
-                angular.forEach(ga.getAll(),function(t){
-                    ga(t.get('name') + '.send', 'pageview', path);
-                });
-            });
-        }
-    });
-
-    $analyticsProvider.registerEventTrack(function (action, properties) {
-
-        if (!properties || !properties.category) {
-            return;
-        }
-
-        if(properties.value) {
-          var parsed = parseInt(properties.value, 10);
-          properties.value = isNaN(parsed) ? 0 : parsed;
-        }
-
-        if (window._gaq) {
-          _gaq.push(['_trackEvent', properties.category, action, properties.label, properties.value, properties.noninteraction]);
-        } else if (window.ga) {
-              if (properties.noninteraction) {
-                angular.forEach(ga.getAll(),function(t) {
-                    ga(t.get('name')+'.send', 'event', properties.category, action, properties.label, properties.value, {nonInteraction: 1});
-                });
-              } else {
-                angular.forEach(ga.getAll(),function(t) {
-                    ga(t.get('name')+'.send', 'event', properties.category, action, properties.label, properties.value);
-                });
-            }
-        }
-      });
-});
+// angular.module('jhmrc').config(function($analyticsProvider) {
+//
+//     $analyticsProvider.registerPageTrack(function (path) {
+//         if (window._gaq) { _gaq.push(['_trackPageview', path]); }
+//         if (window.ga) {
+//             ga(function() {
+//                 angular.forEach(ga.getAll(),function(t){
+//                     ga(t.get('name') + '.send', 'pageview', path);
+//                 });
+//             });
+//         }
+//     });
+//
+//     $analyticsProvider.registerEventTrack(function (action, properties) {
+//
+//         if (!properties || !properties.category) {
+//             return;
+//         }
+//
+//         if(properties.value) {
+//           var parsed = parseInt(properties.value, 10);
+//           properties.value = isNaN(parsed) ? 0 : parsed;
+//         }
+//
+//         if (window._gaq) {
+//           _gaq.push(['_trackEvent', properties.category, action, properties.label, properties.value, properties.noninteraction]);
+//         } else if (window.ga) {
+//               if (properties.noninteraction) {
+//                 angular.forEach(ga.getAll(),function(t) {
+//                     ga(t.get('name')+'.send', 'event', properties.category, action, properties.label, properties.value, {nonInteraction: 1});
+//                 });
+//               } else {
+//                 angular.forEach(ga.getAll(),function(t) {
+//                     ga(t.get('name')+'.send', 'event', properties.category, action, properties.label, properties.value);
+//                 });
+//             }
+//         }
+//       });
+// });
