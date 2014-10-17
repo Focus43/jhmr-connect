@@ -14,6 +14,9 @@
             }
         ]).
 
+        value('gaId', 'UA-xxxxx').
+        value('apiEndpoint', 'http://someurl.com'). // TODO: factory
+
         run([
             function(){
 
