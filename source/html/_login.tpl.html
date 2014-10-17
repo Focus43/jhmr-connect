@@ -1,0 +1,34 @@
+
+
+<form name="loginForm" novalidate ng-submit="form.submit(loginForm.$valid)" ng-class="{ loading:form.submitting }">
+
+    <header><h3 class="heading">Log In</h4></header>
+
+    <div class="fields">
+        <div class="field user-field">
+            <input class="input" type="email" name="user" placeholder="Username"
+                ng-model="form.data.user" required />
+            <div ng-if="loginForm.$submitted || loginForm.name.$touched" ng-messages="loginForm.name.$error" class="errors">
+                <div ng-message="required">Please, enter valid username.</div>
+            </div>
+        </div>
+
+        <div class="field password-field">
+            <input class="input" type="text" name="password" placeholder="Password"
+                 ng-model="form.data.password" required />
+            <div ng-if="loginForm.$submitted || loginForm.age.$touched" ng-messages="loginForm.age.$error" class="errors">
+                <div ng-message="required">Please, enter valid password.</div>
+            </div>
+        </div>
+
+        <div ng-if="loginForm.$submitted || loginForm.emails.$dirty" ng-messages="loginForm.emails.$error" class="errors">
+            <div ng-message="required">Please, fill out all fields.</div>
+            <div ng-message="email">Please, enter valid email address.</div>
+        </div>
+    </div>
+
+    <nav class="form-actions">
+        <input type="submit" value="Enter" class="button primary" />
+    </nav>
+
+</form>

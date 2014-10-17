@@ -1,0 +1,17 @@
+
+
+<div class="row" ng-repeat="lift in reportcard.lifts">
+    <div ng-include="'/path_to_partials/_lift.html'"></div>
+</div>
+
+<div class="row" ng-repeat="terrain in reportcard.terrains">
+    <div ng-include="'/path_to_partials/_terrain.html'"></div>
+</div>
+
+<div ng-include="'/path_to_partials/_conditions.html'"></div>
+
+<div class="row" ng-repeat="skill in reportcard.skills">
+    <div ng-include="'/path_to_partials/_skill.html'"></div>
+</div>
+
+<div ng-include="'/path_to_partials/_sociallinks.html'"></div>

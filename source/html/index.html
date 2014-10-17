@@ -11,11 +11,14 @@
 <link rel="stylesheet" type="text/css" href="<%= assetPath('css/application.css') %>" />
 </head>
 
-<body><!--__NG_TEMPLATES__-->
+<body ng-app="jhmrc"><!--__NG_TEMPLATES__-->
 
-    <div>
-
+    <header></header>
+    <nav></nav>
+    <div class="{{pageName | dasherize}}">
+        <ng-view></ng-view>
     </div>
+
 
 <script type="text/javascript" src="<%= assetPath('js/core.js') %>"></script>
 <script type="text/javascript" src="<%= assetPath('js/application.js') %>"></script>

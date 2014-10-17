@@ -38,7 +38,10 @@
                 sourcePath('bower_components/angular-resource/angular-resource.js'),
                 sourcePath('bower_components/angular-route/angular-route.js'),
                 // Touch
-                sourcePath('bower_components/angular-touch/angular-touch.js')
+                sourcePath('bower_components/angular-touch/angular-touch.js'),
+                // Forms
+                sourcePath('bower_components/angular-messages/angular-messages.js')
+                
                 // sourcePath('bower_components/fastclick/lib/fastclick.js')
                 // sourcePath('bower_components/angular-strap/dist/angular-strap.js')
                 // sourcePath('bower_components/angularLocalStorage/src/angularLocalStorage.js')
