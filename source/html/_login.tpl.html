@@ -6,7 +6,7 @@
 
     <div class="fields">
         <div class="field user-field">
-            <input class="input" type="text" name="user" placeholder="Username"
+            <input class="input" type="email" name="user" placeholder="Username"
                 ng-model="form.data.user" required />
             <div ng-if="loginForm.$submitted || loginForm.name.$touched" ng-messages="loginForm.name.$error" class="errors">
                 <div ng-message="required">Please, enter valid username.</div>
@@ -22,8 +22,8 @@
         </div>
 
         <div ng-if="loginForm.$submitted || loginForm.emails.$dirty" ng-messages="loginForm.emails.$error" class="errors">
-            <div ng-message="required">You did not enter an email for each field</div>
-            <div ng-message="email">Each field must contain a valid email</div>
+            <div ng-message="required">Please, fill out all fields.</div>
+            <div ng-message="email">Please, enter valid email address.</div>
         </div>
     </div>
 

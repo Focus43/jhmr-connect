@@ -1,1 +1,1 @@
-angular.module('jhmrc.login', []);
+angular.module('jhmrc.login', ['ngMessages', 'ngAnimate', 'ngRoute']);
