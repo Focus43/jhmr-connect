@@ -14,12 +14,12 @@
             }
         ]).
 
-        value('gaId', 'UA-xxxxx').
-        value('apiEndpoint', 'http://someurl.com'). // TODO: factory
+        // value('gaId', 'UA-xxxxx').
+        // value('apiEndpoint', 'http://someurl.com'). // TODO: factory
 
         run([
-            function(){
-
+            function( ){
+                console.log("run");
             }
         ]);
 

@@ -1,1 +1,1 @@
-angular.module('jhmrc.common', []);
+angular.module('jhmrc.common', ['portalService']);

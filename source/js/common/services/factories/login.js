@@ -1,7 +1,7 @@
-angular.module('portalService', ['ngResource']).
+angular.module('portalService').
     factory("Login", ['$resource', function ($resource) {
 
-        var Login = $resource('http://login.com', {}, {
+        var Login = $resource('http://authenticate-jhmr.com', {}, {
             authenticate: { method: "GET" },
             resetPassword: { }
         });
