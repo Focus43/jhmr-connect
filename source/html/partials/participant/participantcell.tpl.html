@@ -1,8 +1,8 @@
 
 
 <div class="row participant-cell">
-    <div class="col-md-3">{{ p.fullName }}</div>
-    <div class="col-md-1">{{ p.weirdIcon }}</div>
+    <div class="col-md-3">{{ p.ParticipantFirstName }} {{ p.ParticipantLastName }}</div>
+    <div class="col-md-1"><!-- {{ p.weirdIcon }} --> icon</div>
     <div class="col-md-5">{{ p.level }}</div>
-    <div class="col-md-3" ng-click="goToReportCard(p.cardid)"><i class="fa fa-angle-double-right fa-2x"</div>
+    <div class="col-md-3" ng-click="goToReportCard(p.cardid)"><i class="fa fa-angle-double-right fa-2x"></i></div>
 </div>

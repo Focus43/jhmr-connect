@@ -1,8 +1,8 @@
+<div>
+    {{ fullName }}
+    <div class="row" ng-repeat="p in participant.connections">
 
-<span>{{ participant.fullName }}</span>
+        <div ng-include="'/partials/participant/participantcell.tpl.html'"></div>
 
-<div class="row" ng-repeat="p in participant.parties">
-
-    <div ng-include="'/partials/participant/participantcell.html'"></div>
-
+    </div>
 </div>

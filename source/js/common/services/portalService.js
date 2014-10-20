@@ -7,6 +7,6 @@ var portalService = angular.module('portalService', ['ngRoute', 'ngResource']).
 
         // routes
         $routeProvider.when('/', { templateUrl: '/login.tpl.html', controller: 'LoginCtrl' })
-            .when('/participant/:name', { templateUrl: '/participant.tpl.html', controller: 'ParticipantCtrl' })
+            .when('/participant/:id', { templateUrl: '/participant.tpl.html', controller: 'ParticipantCtrl' })
             .otherwise({redirectTo: '/'});
     }]);
