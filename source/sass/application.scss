@@ -1,1 +1,14 @@
 *{-webkit-font-smoothing:antialiased;} // just testing for gulp builds
+
+$darkerRed:     #8e1414;
+$lighterRed:    #a41e1e;
+
+$headerBackgroundImage: url('img/header-texture.jpg');
+$modalBackgroundColor: rgba(0,0,0,.8);
+
+// Layout Basics
+#wait-for-it { background-color: $modalBackgroundColor; }
+
+// Participant
+
+.participant-cell { background-color: $lighterRed }
