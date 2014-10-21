@@ -11,8 +11,10 @@
 
 *{-webkit-font-smoothing:antialiased;} // just testing for gulp builds
 
-$darkerRed:     #8e1414;
-$lighterRed:    #a41e1e;
+$darkerCellBackground:  #8e1414;
+$lighterCellBackground: #a41e1e;
+$darkTextColor:         #333333;
+$lightTextColor:        #ffffff;
 
 $headerBackgroundImage: url('img/header-texture.jpg');
 $modalBackgroundColor: rgba(0,0,0,.8);
@@ -20,6 +22,28 @@ $modalBackgroundColor: rgba(0,0,0,.8);
 // Layout Basics
 #wait-for-it { background-color: $modalBackgroundColor; }
 
+.collapse.am-collapse {
+  animation-duration: .3s;-webkit-animation-duration: .3s;
+  animation-timing-function: ease;-webkit-animation-timing-function: ease;
+  animation-fill-mode: backwards;-webkit-animation-fill-mode: backwards;
+  overflow: hidden;
+  &.in-remove {
+    animation-name: collapse;-webkit-animation-name: collapse;
+    display: block;
+  }
+  &.in-add {
+    animation-name: expand;-webkit-animation-name: expand;
+  }
+}
+
 // Participant
 
-.participant-cell { background-color: $lighterRed }
+.participant-cell { background-color: $lighterCellBackground;color: $lightTextColor;font-weight: bold;cursor: pointer;margin-bottom: 2px;padding: 4px 0;
+    &:hover { color: darken($lightTextColor, 15%); }
+}
+
+// Report Card
+.panel-heading {
+    h4.panel-title { float: left; }
+    a { float: right;color: $darkTextColor; }
+}

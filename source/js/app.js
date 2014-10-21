@@ -5,7 +5,8 @@
     angular.module('jhmrc', [
         'jhmrc.common',
         'jhmrc.login',
-        'jhmrc.participant'
+        'jhmrc.participant',
+        'jhmrc.reportcard'
     ]).
 
         config([
@@ -19,7 +20,7 @@
 
         run([
             function( ){
-                console.log("run");
+
             }
         ]);
 

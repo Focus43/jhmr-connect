@@ -1,8 +1,11 @@
-<div>
-    {{ fullName }}
-    <div class="row" ng-repeat="p in participant.connections">
-
+<div class="container-fluid">
+    <h2>{{ fullName }}</h2>
+    <h4>Your Report Cards</h4>
+    <div ng-repeat="r in participant.reportCards">
+        <div ng-include="'/partials/reportcard/cardcell.tpl.html'"></div>
+    </div>
+    <h4>Your Connections</h4>
+    <div ng-repeat="p in participant.connections">
         <div ng-include="'/partials/participant/participantcell.tpl.html'"></div>
-
     </div>
 </div>

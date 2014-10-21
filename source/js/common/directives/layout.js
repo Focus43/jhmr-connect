@@ -1,3 +1,21 @@
+/**
+ * @note toggles up/down arrow on panle collapse
+ */
+angular.module('jhmrc').directive('toggleOpenClosed', function(){
+    return {
+        restrict : "A",
+        link : function(scope, element, attrs) {
+            element.on('click', function () {
+                var _icon = element.find("i");
+                if ( _icon.hasClass("fa-toggle-up") ) {
+                    _icon.removeClass("fa-toggle-up").addClass("fa-toggle-down");
+                } else {
+                    _icon.removeClass("fa-toggle-down").addClass("fa-toggle-up");
+                }
+            });
+        }
+    };
+});
 
 /**
  * @note toggles sibling elments' active state
