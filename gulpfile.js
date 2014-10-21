@@ -35,7 +35,8 @@
      */
     var sources = {
         sass: sourcePath('sass/application.scss'),
-        fontawesome: sourcePath('bower_components/font-awesome/css/font-awesome.css'),
+        fontawesome: sourcePath('bower_components/font-awesome/scss/font-awesome.scss'),
+        bootstrap: sourcePath('bower_components/bootstrap/dist/css/bootstrap.css'),
         js: {
             core: [
                 // Basics
@@ -91,7 +92,7 @@
 
     // Sass
     function taskSass ( outputStyle, workflow ) {
-        return gulp.src([ sources.sass, sources.fontawesome ]) // JON: can u look at this? The fontawesome stuff isn't getting added
+        return gulp.src([ sources.fontawesome, sources.bootstrap, sources.sass ]) // JON: can u look at this? The fontawesome/bs stuff isn't getting added
             .pipe(Sass({ compass:true, style:(outputStyle || 'nested') }))
             .on('error', function(err){
                 console.log(err.toString());
@@ -195,7 +196,7 @@
 
         // Livereload ONLY on *.css changes in the build directory, NOT .scss file changes
         gulp.watch(buildPath('assets/css/*.css')).on('change', function( file ){
-            LiveReload.change(file.path);
+            // LiveReload.change(file.path);
         });
     });
 

@@ -6,7 +6,7 @@ angular.module('jhmrc.login').
 
             this.form.submitting = true;
 
-            Login.authenticate( self.data, function ( response ) {
+            Login.authenticate( this.data, function ( response ) {
                 console.log(response);
                 if ( response.status && response.status === "success" ) {
                     $rootScope.$broadcast("i-haz-success");
