@@ -1,4 +1,7 @@
 <div class="row">
-    <div class="col-md-4 col-sm-4">{{ lift.liftname }}</div>
-    <div class="col-md-4 col-sm-4">{{ lift.vert }} ft</div>
+    <div class="col-md-4 col-sm-4 col-xs-4"><img class="icon" ng-src="/assets/img/lift_icons/RC_{{lift.acronym}}.svg"></div>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <i class="fa fa-area-chart fa-lg"></i><span class="stats"> {{ lift.elevationGain }} ft elevation</span><br>
+        <i class="fa fa-area-chart fa-lg"></i><span class="stats"> {{ lift.elevationGain }} laps</span>
+    </div>
 </div>

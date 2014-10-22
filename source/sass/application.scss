@@ -47,3 +47,10 @@ $modalBackgroundColor: rgba(0,0,0,.8);
     h4.panel-title { float: left; }
     a { float: right;color: $darkTextColor; }
 }
+
+.lift {
+    .row { padding: 5px;
+        img.icon {  }
+        span.stats { font-weight: bold;font-size: 1.33333333em;font-weight: bold;line-height: 0.75em;vertical-align: -15%; }
+    }
+}
