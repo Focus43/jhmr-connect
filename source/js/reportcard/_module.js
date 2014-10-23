@@ -1,1 +1,1 @@
-angular.module('jhmrc.reportcard', ['mgcrea.ngStrap.collapse']);
+angular.module('jhmrc.reportcard', ['mgcrea.ngStrap.collapse', 'ngAnimate']);

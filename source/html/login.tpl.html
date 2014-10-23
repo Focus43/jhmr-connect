@@ -1,29 +1,31 @@
-
-
-<form name="loginForm" novalidate ng-submit="submit(loginForm.$valid)" ng-class="{ loading:form.submitting }">
-
-    <header><h3 class="heading">Log In</h4></header>
-
-    <div class="fields">
-        <div class="field username-field">
-            <input class="input" type="email" name="username" placeholder="Username"
-                ng-model="form.data.username" required />
-            <div ng-if="loginForm.$submitted" ng-messages="loginForm.username.$error" class="errors">
-                <div ng-message="required">Please, enter valid username.</div>
+<div class="container-fluid">
+    <div class="row">
+        <form class="login" name="loginForm" novalidate ng-submit="submit(loginForm.$valid)" ng-class="{ loading:form.submitting }">
+            <div class="fields">
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    <div class="field username-field">
+                        <input class="input" type="email" name="username" placeholder="Username"
+                            ng-model="form.data.username" required />
+                        <div ng-if="loginForm.$submitted" ng-messages="loginForm.username.$error" class="errors">
+                            <div ng-message="required">Please, enter valid username.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    <div class="field password-field">
+                        <input class="input" type="text" name="password" placeholder="Password"
+                             ng-model="form.data.password" required />
+                        <div ng-if="loginForm.$submitted" ng-messages="loginForm.password.$error" class="errors">
+                            <div ng-message="required">Please, enter valid password.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12">
+                    <nav class="form-actions">
+                        <input type="submit" value="Enter" class="button primary" />
+                    </nav>
+                </div>
             </div>
-        </div>
-
-        <div class="field password-field">
-            <input class="input" type="text" name="password" placeholder="Password"
-                 ng-model="form.data.password" required />
-            <div ng-if="loginForm.$submitted" ng-messages="loginForm.password.$error" class="errors">
-                <div ng-message="required">Please, enter valid password.</div>
-            </div>
-        </div>
+        </form>
     </div>
-
-    <nav class="form-actions">
-        <input type="submit" value="Enter" class="button primary" />
-    </nav>
-
-</form>
+</div>

@@ -43,6 +43,7 @@
                 sourcePath('bower_components/angular/angular.js'),
                 sourcePath('bower_components/angular-resource/angular-resource.js'),
                 sourcePath('bower_components/angular-route/angular-route.js'),
+                sourcePath('bower_components/angular-animate/angular-animate.js'),
                 // Touch
                 sourcePath('bower_components/angular-touch/angular-touch.js'),
                 // Forms

@@ -16,12 +16,70 @@ $lighterCellBackground: #a41e1e;
 $darkTextColor:         #333333;
 $lightTextColor:        #ffffff;
 
-$headerBackgroundImage: url('img/header-texture.jpg');
+$headerBackgroundImage: url('/assets/img/header-texture.jpg');
 $modalBackgroundColor: rgba(0,0,0,.8);
 
+$skillLevel1: url('/assets/img/lift_icons/RC_ER.svg');
+$skillLevel2: url('/assets/img/lift_icons/RC_AV.svg');
+$skillLevel3: url('/assets/img/lift_icons/RC_THUN.svg');
+$skillLevel4: url('/assets/img/lift_icons/RC_GONDY.svg');
+
+@mixin navBorderShadow() { box-shadow: inset 0px 0px 4px 1px rgba(50, 7, 7, 0.5); }
+
 // Layout Basics
+header { background-image:$headerBackgroundImage; color: $lightTextColor; }
+
+nav.main { background-color: $lighterCellBackground; position: relative;
+    &.blindUp { height: 5px;margin-bottom: 10px;
+        ul li { height: 5px;padding: 0;margin: 0;opacity: 0.01;}
+        &:after { top: 100%;left: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: inherit;border-color: none;border-top-color: $lighterCellBackground;border-width: 15px;margin-left: -15px;
+}
+    }
+    ul { list-style: none;
+        li { display: block;width: 30%;text-align: center;margin: 5px 3% 5px 0;float:left;padding: 10px 7px 7px;cursor: pointer;color:$lightTextColor;background-color: $darkerCellBackground; @include navBorderShadow(); }
+    }
+}
+
+.page-content { padding: 10px 0; }
+
 #wait-for-it { background-color: $modalBackgroundColor; }
 
+// Login
+form.login {
+    input { width: 100%;margin-top: 5px;margin-bottom: 5px; }
+}
+
+// Participant
+.participant-cell { background-color: $lighterCellBackground;color: $lightTextColor;font-weight: bold;cursor: pointer;margin-bottom: 2px;padding: 4px 0;
+    &:hover { color: darken($lightTextColor, 15%); }
+}
+
+// Report Card
+.panel-heading {
+    h4.panel-title { float: left; }
+    a { float: right;color: $darkTextColor; }
+}
+.lift { margin: 3px 0;padding: 3px 0;
+    .row { padding: 5px;
+        img.icon {  }
+        span.stats { font-weight: bold;font-size: 1.33333333em;font-weight: bold;line-height: 0.75em;vertical-align: -15%; }
+    }
+}
+.skill { margin: 3px 0;padding: 3px 0;
+    &.level-1 { background-color:#f2dede }
+    &.level-2 { background-color:#FCEDE3 }
+    &.level-3 { background-color:#fcf8e3 }
+    &.level-4 { background-color:#dff0d8 }
+    .level { background-repeat: no-repeat;background-size: contain;
+        img { height: 50px; }
+        &.level-rank-1 { background-image: $skillLevel1; }
+        &.level-rank-2 { background-image: $skillLevel2; }
+        &.level-rank-3 { background-image: $skillLevel3; }
+        &.level-rank-4 { background-image: $skillLevel4; }
+    }
+}
+
+// Animations
 .collapse.am-collapse {
   animation-duration: .3s;-webkit-animation-duration: .3s;
   animation-timing-function: ease;-webkit-animation-timing-function: ease;
@@ -34,23 +92,4 @@ $modalBackgroundColor: rgba(0,0,0,.8);
   &.in-add {
     animation-name: expand;-webkit-animation-name: expand;
   }
-}
-
-// Participant
-
-.participant-cell { background-color: $lighterCellBackground;color: $lightTextColor;font-weight: bold;cursor: pointer;margin-bottom: 2px;padding: 4px 0;
-    &:hover { color: darken($lightTextColor, 15%); }
-}
-
-// Report Card
-.panel-heading {
-    h4.panel-title { float: left; }
-    a { float: right;color: $darkTextColor; }
-}
-
-.lift {
-    .row { padding: 5px;
-        img.icon {  }
-        span.stats { font-weight: bold;font-size: 1.33333333em;font-weight: bold;line-height: 0.75em;vertical-align: -15%; }
-    }
 }

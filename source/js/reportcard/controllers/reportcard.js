@@ -27,10 +27,11 @@ angular.module('jhmrc.reportcard').
             ],
 
             skills: [
-                { skill: "turn", completed: "4" },
-                { skill: "hucking", completed: "2" },
-                { skill: "backflip", completed: "3" },
-                { skill: "method", completed: "1" },
+                { level: "Making Turns on Green Terrain", levelRank: "4", description: "Pressure management in bumps, powder, trees and the steeps" },
+                { level: "hucking", levelRank: "2", description: "Pressure management in bumps, powder, trees and the steeps" },
+                { level: "backflip", levelRank: "3", description: "Pressure management in bumps, powder, trees and the steeps" },
+                { level: "method", levelRank: "1", description: "Pressure management in bumps, powder, trees and the steeps" },
+                { level: "Dynamic Short Radius Parallel", levelRank: "3", description: "Varying turn rhythm and shape for terrain and conditions" }
             ]
         };
 

@@ -18,6 +18,22 @@ angular.module('jhmrc').directive('toggleOpenClosed', function(){
 });
 
 /**
+ * @note toggles nav vis
+ */
+angular.module('jhmrc').directive('toggleNav', function(){
+    return {
+        restrict : "A",
+        link : function(scope, element, attrs) {
+            element.on('click', function (evt) { 
+                if ( evt.target.tagName === "LI" ) return;
+                var _nav = angular.element(document.querySelectorAll("nav.main"));
+                _nav.toggleClass("blindUp");
+            });
+        }
+    };
+});
+
+/**
  * @note toggles sibling elments' active state
  */
 angular.module('jhmrc').directive('toggleSiblingActiveClass', function(){
