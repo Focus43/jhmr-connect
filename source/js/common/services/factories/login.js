@@ -1,7 +1,7 @@
 angular.module('portalService').
     factory("Login", ['$resource', function ($resource) {
 
-        var Login = $resource('http://authenticate-jhmr.com', {}, {
+        var Login = $resource('https://vista.vertservices.net/token?', {}, {
             authenticate: { method: "GET" },
             resetPassword: { }
         });

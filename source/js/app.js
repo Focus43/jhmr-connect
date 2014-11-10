@@ -19,7 +19,7 @@
         // value('apiEndpoint', 'http://someurl.com'). // TODO: factory
 
         run([
-            function( ){
+            function(  ){
 
             }
         ]);

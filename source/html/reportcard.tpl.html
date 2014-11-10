@@ -1,72 +1,77 @@
-<div class="container-fluid">
+<div class="container-fluid report-card">
 
     <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <div class="panel-group">
-              <div class="panel panel-default" bs-collapse>
-                <div class="panel-heading clearfix">
-                  <h4 class="panel-title">
-                      <h4 class="panel-title">Lesson {{ reportcard.date }}, {{ reportcard.classDescr }}</h4>
+        <div class="panel-group">
+
+            <div class="col-md-6 col-sm-12">
+                <!-- <div class="panel-group"> -->
+                  <div class="panel panel-default" bs-collapse>
+                    <div class="panel-heading clearfix">
+                      <h4 class="panel-title">
+                          <h4 class="panel-title">Lesson {{ reportcard.date }}, {{ reportcard.classDescr }}</h4>
+                          <a bs-collapse-toggle toggle-open-closed><i class="fa fa-toggle-up fa-lg"></i></a>
+                      </h4>
+                    </div>
+                    <div class="panel-collapse" bs-collapse-target>
+                      <div class="panel-body">
+                        CARD IMAGE HERE
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="panel panel-default" bs-collapse>
+                    <div class="panel-heading clearfix">
+                      <h4 class="panel-title">Lifts Ridden</h4>
                       <a bs-collapse-toggle toggle-open-closed><i class="fa fa-toggle-up fa-lg"></i></a>
-                  </h4>
-                </div>
-                <div class="panel-collapse" bs-collapse-target>
-                  <div class="panel-body">
-                    CARD IMAGE HERE
-                  </div>
-                </div>
-              </div>
-
-              <div class="panel panel-default" bs-collapse>
-                <div class="panel-heading clearfix">
-                  <h4 class="panel-title">Lifts Ridden</h4>
-                  <a bs-collapse-toggle toggle-open-closed><i class="fa fa-toggle-up fa-lg"></i></a>
-                </div>
-                <div class="panel-collapse" bs-collapse-target>
-                  <div class="panel-body">
-                    <div class="row lift" ng-repeat="lift in reportcard.lifts">
-                        <div ng-include="'/partials/reportcard/lift.tpl.html'"></div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 col-xs-12">Total vert: 4500 ft</div>
-                        <div class="col-md-6 col-xs-12">Total runs: 18</div>
+                    <div class="panel-collapse" bs-collapse-target>
+                      <div class="panel-body lifts">
+                        <div class="row lift" ng-repeat="lift in reportcard.lifts">
+                            <div ng-include="'/partials/reportcard/lift.tpl.html'"></div>
+                        </div>
+                        <div class="row totals">
+                            <div class="col-md-2 col-sm-4 col-xs-3"></div>
+                            <div class="col-md-5 col-sm-4 col-xs-9">
+                                <span>Total vert: 4500 ft</span>
+                            </div>
+                            <div class="col-xs-3 visible-xs"></div>
+                            <div class="col-md-5 col-sm-4 col-xs-9">
+                                <span>Total runs: 18</span>
+                            </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div class="panel panel-default" bs-collapse>
-                <div class="panel-heading clearfix">
-                  <h4 class="panel-title">Terrain Encountered</h4>
-                  <a bs-collapse-toggle toggle-open-closed><i class="fa fa-toggle-up fa-lg"></i></a>
-                </div>
-                <div class="panel-collapse" bs-collapse-target>
-                  <div class="panel-body">
-                    <ul class="terain" ng-repeat="terrain in reportcard.terrains">
-                        <li ng-include="'/partials/reportcard/terrain.tpl.html'"></li>
-                    </ul>
+                  <div class="panel panel-default" bs-collapse>
+                    <div class="panel-heading clearfix">
+                      <h4 class="panel-title">Terrain Encountered</h4>
+                      <a bs-collapse-toggle toggle-open-closed><i class="fa fa-toggle-up fa-lg"></i></a>
+                    </div>
+                    <div class="panel-collapse" bs-collapse-target>
+                      <div class="panel-body">
+                        <ul class="terrain">
+                            <li ng-repeat="t in reportcard.terrain" ng-style="{'width': 100/reportcard.terrain.length+'%'}" ng-include="'/partials/reportcard/terrain.tpl.html'"></li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
 
-              <div class="panel panel-default" bs-collapse>
-                <div class="panel-heading clearfix">
-                  <h4 class="panel-title">Conditions</h4>
-                  <a bs-collapse-toggle toggle-open-closed><i class="fa fa-toggle-up fa-lg"></i></a>
-                </div>
-                <div class="panel-collapse" bs-collapse-target>
-                  <div class="panel-body">
-                    <div ng-include="'/partials/reportcard/conditions.tpl.html'"></div>
+                  <div class="panel panel-default" bs-collapse>
+                    <div class="panel-heading clearfix">
+                      <h4 class="panel-title">Conditions</h4>
+                      <a bs-collapse-toggle toggle-open-closed><i class="fa fa-toggle-up fa-lg"></i></a>
+                    </div>
+                    <div class="panel-collapse" bs-collapse-target>
+                      <div class="panel-body">
+                        <div ng-include="'/partials/reportcard/conditions.tpl.html'"></div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                <!-- </div> -->
             </div>
-        </div>
 
-        <div class="col-md-6 col-sm-12">
-
-            <div class="panel-group">
-
+            <div class="col-md-6 col-sm-12" style="margin-top: 5px;">
                 <div class="panel panel-default" bs-collapse>
                   <div class="panel-heading clearfix">
                     <h4 class="panel-title">{{ reportcard.level.discipline }} - {{ reportcard.level.shortName }} Skills Progression</h4>
@@ -108,10 +113,8 @@
                     </div>
                   </div>
                 </div>
-
-              </div>
             </div>
         </div>
-
     </div>
+
 </div>

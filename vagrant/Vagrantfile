@@ -39,7 +39,8 @@ Vagrant.configure("2") do |config|
       # Gems to install out of the gate
       :gems => [
         {:name => 'bundler'},
-        {:name => 'compass', :version => '~> 1.0.1'}
+        {:name => 'compass', :version => '~> 1.0.1'},
+        {:name => 'breakpoint'}
       ]
     },
     # PostgreSQL settings

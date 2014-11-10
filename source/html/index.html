@@ -19,17 +19,20 @@
             <div class="col-md-8 col-sm-8 col-xs-8"><h1>Guest Connect</h1></div>
         </div>
     </header>
-    <nav class="main clearfix" toggle-nav>
-        <ul>
-            <li>stuff</li><li>more stuff</li><li>and shit</li>
-        </ul>
-    </nav>
     <div class="page-content"> <!--  class="{{pageName | dasherize}}" -->
         <ng-view></ng-view>
     </div>
 
 
     <div loading id="wait-for-it" class="center-block hidden"><i class="fa fa-circle-o-notch fa-4x fa-spinner"></i></div>
+
+    <nav class="main" toggle-nav>
+        <ul>
+            <li><i class="fa fa-list"></i> <span>Score Card</span></li>
+            <li><i class="fa fa-area-chart"></i> <span>Snow Stats</span></li>
+            <li><i class="fa fa-user"></i> <span>Profile</span></li>
+        </ul>
+    </nav>
 
 <script type="text/javascript" src="<%= assetPath('js/core.js') %>"></script>
 <script type="text/javascript" src="<%= assetPath('js/application.js') %>"></script>

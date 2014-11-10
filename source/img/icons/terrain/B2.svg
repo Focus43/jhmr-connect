@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<g id="Boundary">
+	<path d="M98.9,1v97.7H1.2V1H98.9 M99.9,0H0.2v99.7h99.7V0L99.9,0z"/>
+</g>
+<g id="Terrain">
+	<g id="D_Blue">
+		<rect id="Blue_1_" x="13.2" y="21.9" fill="#3066D1" width="33.7" height="33.7"/>
+		<rect id="Blue_2_" x="53.2" y="21.8" fill="#3066D1" width="33.7" height="33.7"/>
+	</g>
+	<text transform="matrix(1 0 0 1 14.1747 93.3335)" font-family="'MyriadPro-Regular'" font-size="14">Double Blue</text>
+</g>
+</svg>

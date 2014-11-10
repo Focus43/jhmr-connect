@@ -4,7 +4,7 @@
             <div class="fields">
                 <div class="col-md-5 col-sm-6 col-xs-12">
                     <div class="field username-field">
-                        <input class="input" type="email" name="username" placeholder="Username"
+                        <input class="input" type="text" name="username" placeholder="Username"
                             ng-model="form.data.username" required />
                         <div ng-if="loginForm.$submitted" ng-messages="loginForm.username.$error" class="errors">
                             <div ng-message="required">Please, enter valid username.</div>
