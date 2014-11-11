@@ -45,6 +45,7 @@
                 sourcePath('bower_components/angular-route/angular-route.js'),
                 sourcePath('bower_components/angular-animate/angular-animate.js'),
                 sourcePath('bower_components/angular-cookies/angular-cookies.js'),
+                sourcePath('bower_components/angularLocalStorage/src/angularLocalStorage.js'),
                 // Touch
                 sourcePath('bower_components/angular-touch/angular-touch.js'),
                 // Forms
