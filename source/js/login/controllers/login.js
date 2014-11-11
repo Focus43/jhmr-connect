@@ -7,7 +7,7 @@ angular.module('jhmrc.login').
             Login.authenticate( angular.extend(this.form.data, {'realm': 'JhmrProCard'}), function ( response ) {
                 if ( response.token && response.mesaId ) {
                     $rootScope.mesaId = response.mesaId;
-                    document.cookie = "VsToken=" + response.token + ";domain=.test.dev";
+                    document.cookie = "VsToken=" + response.token + ";domain=.vertservices.net";
                     $rootScope.$broadcast("i-haz-success");
                     $location.path("/participant/mememe");
                 } else if ( response.error ) {
