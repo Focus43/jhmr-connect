@@ -1,5 +1,6 @@
-<div class="col-md-2 col-sm-3 col-xs-3">
-    <div class="level level-rank-{{skill.levelRank}}"><img ng-src="/assets/img/icons/{{acronym}}.svg" class="img-responsive"></div>
+<div class="col-md-2 col-sm-2 col-xs-3">
+    <div class="level level-rank-{{skill.percentageComplete/25}}"><img ng-src="/assets/img/icons/competency/{{skill.proficiencyAcronym}}.svg"></div>
 </div>
-<div class="col-md-4 col-sm-9 col-xs-9">{{ skill.level }}</div>
-<div class="col-md-6 hidden-sm hidden-xs">{{ skill.description }}</div>
+<div class="col-md-4 col-sm-3 col-xs-9"><strong>{{ skill.shortName }}</strong></div>
+<div class="visible-xs col-xs-3"></div>
+<div class="col-md-6 col-sm-7 col-xs-9">{{ skill.description }}</div>

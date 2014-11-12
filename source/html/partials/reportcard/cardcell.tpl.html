@@ -1,6 +1,10 @@
-<div class="row participant-cell" ng-click="goToReportCard(p.cardid)">
+<div class="row participant-cell" ng-click="goToReportCard(r.reportCardId)">
     <div class="col-md-1 col-sm-1 col-xs-1"><i class="fa fa-table fa-lg"></i></div>
-    <div class="col-md-3 col-sm-3 col-xs-3">{{ r.ParticipantFirstName }}</div>
-    <div class="col-md-5 col-sm-5 col-xs-5">Level {{ r.level }}</div>
-    <div class="col-md-3 col-sm-3 col-xs-3"><i class="fa fa-angle-double-right fa-lg"></i></div>
+    <div class="col-md-4 hidden-sm hidden-xs">{{ r.school }}</div>
+    <div class="hidden-xl hidden-lg hidden-md col-sm-4 hidden-xs">{{ r.resortShortName }}</div>
+    <div class="col-md-2 col-sm-3 hidden-xs">{{ r.discipline }}</div>
+    <div class="hidden-xl hidden-lg hidden-md hidden-sm col-xs-5">{{ r.disciplineAcronym }}</div>
+    <div class="col-md-2 col-sm-3 col-xs-4">{{ r.levelShortName }}</div>
+    <div class="col-md-2 hidden-sm hidden-xs">Level {{ r.level }}</div>
+    <div class="col-md-1 col-sm-1 col-xs-1"><i class="fa fa-angle-double-right fa-lg"></i></div>
 </div>

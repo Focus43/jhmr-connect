@@ -112,10 +112,10 @@ ul.social {
         &.level-4 { background-color:#dff0d8 }
         .level { background-repeat: no-repeat;background-size: contain;
             img { height: 50px; }
-            &.level-rank-1 { background-image: $skillLevel1; }
-            &.level-rank-2 { background-image: $skillLevel2; }
-            &.level-rank-3 { background-image: $skillLevel3; }
-            &.level-rank-4 { background-image: $skillLevel4; }
+            // &.level-rank-1 { background-image: $skillLevel1; }
+            // &.level-rank-2 { background-image: $skillLevel2; }
+            // &.level-rank-3 { background-image: $skillLevel3; }
+            // &.level-rank-4 { background-image: $skillLevel4; }
         }
     }
     .terrain { padding: 0;

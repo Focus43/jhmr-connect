@@ -6,9 +6,7 @@ angular.module('portalService').
                 method: 'GET',
                 isArray: true,
                 withCredentials: true,
-                headers:{   'Authorization':'VsToken ' + storage.get('vstoken'),
-                            'Accept':'application/json',
-                            'Content-Type':'application/json; charset=utf-8', }
+                headers:{'Authorization':'VsToken ' + storage.get('vstoken')}
             }
         });
 

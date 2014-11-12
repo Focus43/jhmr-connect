@@ -1,6 +1,7 @@
-<div class="row participant-cell" ng-click="goToParticipant(p.id)">
+<div class="row participant-cell" ng-click="goToParticipant(p.vistaId)">
     <div class="col-md-1 col-sm-1 col-xs-1"><!-- {{ p.weirdIcon }} --><i class="fa fa-user fa-lg"></i></div>
-    <div class="col-md-3 col-sm-3 col-xs-3">{{ p.ParticipantFirstName }} {{ p.ParticipantLastName }}</div>
-    <div class="col-md-5 col-sm-5 col-xs-5">Level {{ p.level }}</div>
-    <div class="col-md-3 col-sm-3 col-xs-3"><i class="fa fa-angle-double-right fa-lg"></i></div>
+    <div class="col-md-3 col-sm-3 col-xs-4">{{ p.firstName }} {{ p.lastName }}</div>
+    <div class="col-md-5 col-sm-5 col-xs-5">{{ p.reportCards.length }} Report Cards</div>
+    <div class="col-md-2 col-sm-2 hidden-xs"></div>
+    <div class="col-md-1 col-sm-1 col-xs-1"><i class="fa fa-angle-double-right fa-lg"></i></div>
 </div>
