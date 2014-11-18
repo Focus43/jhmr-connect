@@ -23,6 +23,7 @@ $darkTextColor:         #333333;
 $lightTextColor:        #ffffff;
 $hoverTextColor:        #FF8B00;
 // backgrounds
+$bodyBackgroundImage: url('/assets/img/bg_login.jpg');
 $headerBackgroundImage: url('/assets/img/header-texture.jpg');
 $modalBackgroundColor: rgba(0,0,0,.8);
 $skillLevel1: url('/assets/img/icons/competency/INTRO.svg');
@@ -41,7 +42,7 @@ $skillLevel4: url('/assets/img/icons/competency/MASTER.svg');
 }
 
 // Layout Basics
-body { margin-bottom: 35px; }
+body { margin-bottom: 35px;  } // background-image:$bodyBackgroundImage;background-repeat: no-repeat;background-size:cover;
 header { background-image:$headerBackgroundImage;color: $lightTextColor;
     h1 {
         @include breakpoint($phonePortrait) { font-size: 22px;margin-top: 13px; }
@@ -68,7 +69,7 @@ nav.main { background-color: $lighterCellBackground;position: fixed;bottom:0;wid
 #wait-for-it { background-color: $modalBackgroundColor; }
 
 // Login
-form.login {
+form.login { margin-top: 45px;
     input { width: 100%;margin-top: 5px;margin-bottom: 5px; }
 }
 
