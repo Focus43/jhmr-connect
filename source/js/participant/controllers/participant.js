@@ -1,5 +1,10 @@
 angular.module('jhmrc.participant').
-    controller('ParticipantCtrl', ['$scope', '$http', '$location', 'Participant', 'storage', function( $scope, $http, $location, Participant, storage ){
+    controller('ParticipantCtrl', ['$scope', '$http', '$location', 'Participant', 'Authentication', 'storage', function( $scope, $http, $location, Participant, Authentication, storage ){
+
+        // Check if logged in
+        if ( !Authentication.isAuthenticated() ) {
+            console.log("not logged in");
+        }
 
         $scope.participant = {
             "vistaId": "8ff320d5-8413-4beb-a3e2-9afe0c6d7246",
@@ -200,21 +205,21 @@ angular.module('jhmrc.participant').
 
         $scope.fullName = $scope.participant.firstName + " " + $scope.participant.lastName;
 
-        $http({
-            method: 'GET',
-            withCredentials: true,
-            url: "https://maven.vertservices.net/guest/guests/"+ storage.get('mesaId') + "/libraries",
-            headers: {
-                // 'Accept':'application/json',
-                // 'Content-Type':'application/json; charset=utf-8',
-                'Authorization':'VsToken ' + storage.get('vstoken')
-            },
-            responseType: 'json'
-        })
-        .success(function(data, status, headers, config) {
-            console.log(data);
-            // $scope.participant(data);
-        });
+        // $http({
+        //     method: 'GET',
+        //     withCredentials: true,
+        //     url: PortalService.apiEndPoints.library + storage.get('mesaId') + "/libraries",
+        //     headers: {
+        //         // 'Accept':'application/json',
+        //         // 'Content-Type':'application/json; charset=utf-8',
+        //         'Authorization':'VsToken ' + storage.get('vstoken')
+        //     },
+        //     responseType: 'json'
+        // })
+        // .success(function(data, status, headers, config) {
+        //     console.log(data);
+        //     // $scope.participant(data);
+        // });
 
         $scope.goToParticipant = function (id) {
             $location.path("/participant/" + id);

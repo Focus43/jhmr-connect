@@ -1,4 +1,4 @@
-angular.module('jhmrc.common', ['portalService', 'angularLocalStorage'])
+angular.module('jhmrc.common', ['angularLocalStorage'])
 
 .config(['$httpProvider', function( $httpProvider ) {
     $httpProvider.defaults.withCredentials = true;

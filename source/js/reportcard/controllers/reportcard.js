@@ -253,7 +253,7 @@ angular.module('jhmrc.reportcard').
                 _totalVert += obj.elevationGain;
             })
 
-            for ( liftStr in _liftReps ) {
+            for ( var liftStr in _liftReps ) {
                 var _lift = JSON.parse(liftStr);
                 _lift.laps = _liftReps[liftStr];
                 _lifts.push(_lift);

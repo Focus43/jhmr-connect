@@ -58,7 +58,13 @@
                 // sourcePath('bower_components/angularLocalStorage/src/angularLocalStorage.js')
             ],
             app: [
-                sourcePath('js/**/*.js')
+                sourcePath('js/**/*.js'),
+                // sourcePath('js/common/**/*.js'),
+                // sourcePath('js/services/**/*.js'),
+                // sourcePath('js/login/**/*.js'),
+                // sourcePath('js/participant/**/*.js'),
+                // sourcePath('js/reportcard/**/*.js')
+
             ]
         }
     };

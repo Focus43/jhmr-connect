@@ -1,4 +1,4 @@
-angular.module('portalService').
+angular.module('jhmrc.participant').
     factory("Participant", ['$resource', '$rootScope', 'storage', function ($resource, $rootScope, storage) {
 
         var Participant = $resource('https://maven.vertservices.net/guest/guests/:mesaId/libraries', { 'mesaId': storage.get('mesaId') }, {

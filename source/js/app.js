@@ -25,3 +25,10 @@
         ]);
 
 })( window, window.angular );
+
+var Portal = {};
+Portal.apiEndPoints = {
+      authentication: "https://vista.vertservices.net/token?",
+      library:        "https://maven.vertservices.net/guest/guests/",
+      reportCard:     ""
+  };
