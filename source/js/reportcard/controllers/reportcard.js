@@ -7,7 +7,7 @@ angular.module('jhmrc.reportcard').
               "mesaId": "963d7e5f-1e18-4a17-b3c5-a8db0bebe780",
               "vistaId": "8ff320d5-8413-4beb-a3e2-9afe0c6d7246",
               "lastName": "Miller",
-              "firstName": "Griffen",
+              "firstName": "Griffin",
               "middleName": "",
               "nickname": "Griff",
               "commonFirstName": "Griff",
@@ -204,13 +204,22 @@ angular.module('jhmrc.reportcard').
               "feedback": [
                 {
                   "feedbackId": "ca8fc7ff-cce1-4fc7-9ff1-5ae7e5fafc2c",
-                  "comment": "Congratulations Griff on your first run down the Rendezvous Bowl from the top of the tram! It's a big step and a great hurdle to overcome. Griff did great today, working to extend the confidence he has on blue groomed runs to black terrain. Technical focus on arm position and incorporating pole plants.",
+                  "comment": "Congratulations Griff on your first run down the Rendezvous Bowl from the top of the tram! It's a big step and a great hurdle to overcome. Griff did great today, working to extend the confidence he has on blue groomed runs to black terrain. Technical focus on arm position and incorporating pole plants.\n\nBacon ipsum dolor amet jerky cow esse ball tip dolore. Id commodo eiusmod laborum, kielbasa flank boudin aliquip irure sunt pork chop consectetur ham cupim. ",
                   "commenterLastName": "Moe",
                   "commenterFirstName": "Tommy",
                   "commenterMiddleName": "",
                   "commenterNickname": "Tommy",
                   "commenterCommonFirstName": "Tommy"
-                }
+              },
+              {
+                  "feedbackId": "ca8fc7ff-cce1-4fc7-9ff1",
+                  "comment": "We know you're dealing in stolen ore. But I wanna talk about the assassination attempt on Lieutenant Worf. Wait a minute - you've been declared dead. You can't give orders around here. The game's not big enough unless it scares you a little. You bet I'm agitated! I may be surrounded by insanity, but I am not insane. Mr. Worf, you do remember how to fire phasers?",
+                  "commenterLastName": "Kirk",
+                  "commenterFirstName": "James",
+                  "commenterMiddleName": "",
+                  "commenterNickname": "Tommy",
+                  "commenterCommonFirstName": "Tommy"
+              }
               ],
               "interestedParties": [
                 {

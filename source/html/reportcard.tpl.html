@@ -14,14 +14,16 @@
                     </div>
                     <div class="panel-collapse" bs-collapse-target>
                       <div class="panel-body">
-                        CARD IMAGE HERE
+                          <b>{{ reportcard.firstName }} {{ reportcard.lastName }}</b><br>
+                          <i>Class Discipline</i>: {{ reportcard.discipline }}<br>
+                          <i>Level</i>: {{ reportcard.levelShortName }} - {{ reportcard.level }}<br>
                       </div>
                     </div>
                   </div>
 
                   <div class="panel panel-default" bs-collapse>
                     <div class="panel-heading clearfix">
-                      <h4 class="panel-title">Lifts Ridden</h4>
+                      <h4 class="panel-title">Today's Lifts</h4>
                       <a bs-collapse-toggle toggle-open-closed><i class="fa fa-toggle-up fa-lg"></i></a>
                     </div>
                     <div class="panel-collapse" bs-collapse-target>
@@ -93,11 +95,12 @@
                   </div>
                   <div class="panel-collapse" bs-collapse-target>
                     <div class="panel-body">
-                        Kanskje det hadde blitt mindre byråkratisk om arbeidstager og arbeidsgiver gjorde opp seg imellom, uten legens innblanding?
-                        <br><br>
-                        Det såkalte «Tillitsprosjektet» i Mandal kommune antyder at dette kan være effektivt. Fra 2008 kunne ansatte egenmelde sykdom i inntil ett år, i tillegg til at de fikk mer intensiv oppfølging.
-                        <br><br>
-                        Studien viser så langt at sykefraværet i Mandal etter reformen er 25 prosent lavere enn i kontrollkommunene.
+                        <ul class="feedback">
+                            <li ng-repeat="f in reportcard.feedback">
+                                <div class="quote"><i class="fa fa-quote-right fa-3x"></i> {{ f.comment }}</div>
+                                <div class="signature">- {{ f.commenterFirstName }} {{ f.commenterLastName }}</div>
+                            </li>
+                        </ul>
                     </div>
                   </div>
                 </div>

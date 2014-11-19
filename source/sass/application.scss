@@ -96,7 +96,6 @@ ul.social {
     }
     .lifts {
         .lift { padding: 3px 0;
-            // .TRAM { background-image: url('/assets/img/icons/lift/RC_TRAM.svg');background-repeat: no-repeat;background-size:contain;height: 100%;width: 100%; }
             .row { padding: 5px; }
             img.icon {  }
             span.stats { font-weight: bold;font-size: 1.33333333em;vertical-align: -4%;line-height: 52px;
@@ -113,14 +112,19 @@ ul.social {
         &.level-4 { background-color:#dff0d8 }
         .level { background-repeat: no-repeat;background-size: contain;
             img { height: 50px; }
-            // &.level-rank-1 { background-image: $skillLevel1; }
-            // &.level-rank-2 { background-image: $skillLevel2; }
-            // &.level-rank-3 { background-image: $skillLevel3; }
-            // &.level-rank-4 { background-image: $skillLevel4; }
         }
+        i.fa { color: #3DBA57; }
     }
     .terrain { padding: 0;
         li { float: left; padding: 5px; }
+    }
+    .feedback {
+        li { margin-bottom: 10px;
+            div.signature { text-align:right;font-style: oblique; }
+            div.quote {
+                i { float: left; margin-right: 10px; line-height: 40px; }
+             }
+        }
     }
 }
 
