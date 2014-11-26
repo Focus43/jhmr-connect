@@ -94,6 +94,10 @@ ul.social {
         h4.panel-title { float: left; }
         a { float: right;color: $darkTextColor; }
     }
+    .participant-info { background-repeat: no-repeat;background-position: 80% 50%, 100% 50%;background-size: contain;background-origin: content-box;min-height: 90px;
+        @include breakpoint($phonePortrait) { background-position: 20% 50%, 80% 50%; }
+        .text { @include breakpoint($phonePortrait) { display: none; } }
+     }
     .lifts {
         .lift { padding: 3px 0;
             .row { padding: 5px; }

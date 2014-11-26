@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<g id="Boundary">
+	<path d="M98.9,1v97.7H1.2V1H98.9 M99.9,0H0.2v99.7h99.7V0L99.9,0z"/>
+</g>
+<g id="Terrain">
+	<g id="DD">
+		<polygon points="28.5,69.1 48.4,41.2 28.5,13.4 7.6,41.2 		"/>
+		<polygon points="72.5,69.1 92.4,41.2 72.5,13.4 51.6,41.2 		"/>
+	</g>
+	<text transform="matrix(1 0 0 1 11.6757 93.3335)" font-family="'MyriadPro-Regular'" font-size="14">Double Black</text>
+</g>
+</svg>

@@ -13,10 +13,12 @@
                       </h4>
                     </div>
                     <div class="panel-collapse" bs-collapse-target>
-                      <div class="panel-body">
-                          <b>{{ reportcard.firstName }} {{ reportcard.lastName }}</b><br>
-                          <i>Class Discipline</i>: {{ reportcard.discipline }}<br>
-                          <i>Level</i>: {{ reportcard.levelShortName }} - {{ reportcard.level }}<br>
+                      <div class="panel-body participant-info" style="background-image: url('/assets/img/icons/discipline/{{reportcard.disciplineAcronym}}.svg'), url('/assets/img/icons/levels/{{reportcard.levelAcronym}}.svg');">
+                          <div class="text">
+                              <b>{{ reportcard.firstName }} {{ reportcard.lastName }}</b><br>
+                              <i>Class Discipline</i>: {{ reportcard.discipline }}<br>
+                              <i>Level</i>: {{ reportcard.levelShortName }} - {{ reportcard.level }}<br>
+                          </div>
                       </div>
                     </div>
                   </div>
